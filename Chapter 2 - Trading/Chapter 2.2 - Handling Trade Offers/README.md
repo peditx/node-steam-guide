@@ -1,12 +1,8 @@
-# Chapter 2.2 - Handling Trade Offers
+# فصل 2.2 - مدیریت پیشنهادات تجارت
 
-To start off this chapter, let's duplicate the code we made in the previous
-chapter to a new file. Call it `project2.js`. The code we wrote in 
-[Chapter 1](../../Chapter%201%20-%20Basics) will be the code we use from now 
-on to create all of our bots. It will be the backbone for future bots we create.
+برای شروع این فصل، بیایید کد نوشته شده در فصل قبلی را به یک فایل جدید کپی کنیم. نام آن را `project2.js` بگذارید. کدی که در [فصل 1](../../Chapter%201%20-%20Basics) نوشتیم، از این به بعد کدی خواهد بود که برای ساخت تمامی ربات‌های خود از آن استفاده می‌کنیم. این کد شالوده ربات‌هایی است که در آینده می‌سازیم.
 
-Let's begin adding some code to the top of our project, copied from
-`project1.js`.
+بیایید شروع به اضافه کردن کد به ابتدای پروژه‌مان کنیم که از `project1.js` کپی کرده‌ایم.
 
 ```js
 const SteamUser = require('steam-user');
@@ -25,17 +21,9 @@ const manager = new TradeOfferManager({
 [...]
 ```
 
-Sweet. We `require`d two new modules, and created new instances for both of
-them. In addition, we passed some extra parameters to the `TradeOfferManager`
-module's constructor. We told it to use our `client` variable when it would
-like to access Steam, and our `community` when it would like to access
-the Steam Community. If we did not specify these options, a new instance of
-these modules would be created inside of our `TradeOfferModule` instance, but we
-provide our own so we can have more customizability in the future. We also tell
-TradeOfferManager to use the English language so that we can get the English
-names of items in the trade offers.
+خوب است. ما دو ماژول جدید را `require` کردیم و نمونه‌هایی جدید از هر دو آن‌ها ساختیم. علاوه بر این، چند پارامتر اضافی به سازنده ماژول `TradeOfferManager` ارسال کردیم. به آن گفتیم که از متغیر `client` برای دسترسی به Steam استفاده کند و از `community` برای دسترسی به Steam Community. اگر این گزینه‌ها را مشخص نمی‌کردیم، نمونه جدیدی از این ماژول‌ها در داخل نمونه `TradeOfferManager` ساخته می‌شد، اما ما نمونه‌های خودمان را می‌دهیم تا در آینده قابلیت تنظیمات بیشتری داشته باشیم. همچنین به `TradeOfferManager` گفتیم که از زبان انگلیسی استفاده کند تا نام‌های انگلیسی اقلام در پیشنهادات تجارت را دریافت کنیم.
 
-Let's add some more code while we're at it.
+بیایید کد بیشتری اضافه کنیم.
 
 ```js
 client.on('webSession', (sessionid, cookies) => {
@@ -46,18 +34,9 @@ client.on('webSession', (sessionid, cookies) => {
 });
 ```
 
-Here, we added a new event listener to the `client` instance. We're listening
-for the `webSession` event, which is emitted when we get a session id and
-cookies back from the Steam servers. Then, we pass those cookies to our
-`manager` and `community`, which will allow them to be logged into Steam as
-well. We also tell our `community` instance to start checking to see if we have
-any pending confirmations every 10 second, and accept them if we do. This
-requires you to enter your identity secret, which we address in [Chapter 1.4](../../Chapter%201%20-%20Basics/Chapter%201.4%20-%20TOTP/#how-to-find-your-secrets).
+در اینجا، یک شنونده رویداد جدید به نمونه `client` اضافه کردیم. ما منتظر رویداد `webSession` هستیم، که زمانی که شناسه نشست و کوکی‌ها از سرورهای Steam دریافت می‌شود، ایجاد می‌شود. سپس این کوکی‌ها را به `manager` و `community` ارسال می‌کنیم که به این ترتیب می‌توانند وارد Steam شوند. همچنین به نمونه `community` گفتیم که هر 10 ثانیه بررسی کند که آیا تأییدیه معلقی داریم یا خیر و اگر داشتیم، آن را قبول کند. این نیازمند وارد کردن شناسه هویت شما است، که در [فصل 1.4](../../Chapter%201%20-%20Basics/Chapter%201.4%20-%20TOTP/#how-to-find-your-secrets) توضیح داده شده است.
 
-Sweet, so now we have our `manager`, `client` and `community` all
-logged into Steam. Now let's try doing something with all this. We'll start by
-accepting all incoming trade offers if they come from an account we trust.
-Let's give it go.
+خوب، حالا `manager`، `client` و `community` همگی وارد Steam شده‌اند. حالا بیایید با این همه کد کاری کنیم. ابتدا شروع می‌کنیم به قبول کردن تمامی پیشنهادات تجارت ورودی که از حساب‌هایی که به آن‌ها اعتماد داریم، ارسال شده‌اند.
 
 ```js
 manager.on('newOffer', offer => {
@@ -73,47 +52,27 @@ manager.on('newOffer', offer => {
 });
 ```
 
-Alright, this was quite a bit of code, but let's go through it step-by-step.
+خب، این یک مقدار کد زیاد است، اما بیایید گام به گام آن را بررسی کنیم.
 
-First of all, we added an event listener to our `manager`. This event listener
-listens for the `newOffer` event, which is emitted when we receive a new offer.
-Next, we check if the 64 bit Steam ID of the sender is the same as the one we
-trust. For example, I would replace `your_trusted_account_id` with
-`76561198092490523`. That long number you see is my Steam account's 64 bit
-SteamID. It's easy to find this number – it's in your Steam account's
-permalink. Mine can be seen at [steamcommunity.com/profiles/76561198092490523](https://steamcommunity.com/profiles/76561198092490523).
+ابتدا یک شنونده رویداد به `manager` اضافه کردیم. این شنونده رویداد منتظر رویداد `newOffer` است، که زمانی که پیشنهاد جدیدی دریافت می‌کنیم، ایجاد می‌شود. سپس بررسی می‌کنیم که آیا Steam ID 64 بیتی ارسال‌کننده همان چیزی است که ما به آن اعتماد داریم یا نه. به عنوان مثال، من `your_trusted_account_id` را با `76561198092490523` جایگزین می‌کنم. این عدد طولانی که می‌بینید، Steam ID 64 بیتی حساب Steam من است. پیدا کردن این عدد آسان است – در لینک پروفایل Steam شما موجود است. پروفایل من را می‌توانید در [steamcommunity.com/profiles/76561198092490523](https://steamcommunity.com/profiles/76561198092490523) مشاهده کنید.
 
-If the two Steam ID's match, then we accept the offer using the `offer`'s
-`.accept()` method. We pass a callback to the method, and when the offer is
-accepted (or gets an error), the callback is called. If all works smoothly, you
-should see "Accepted offer. Status: pending/accepted/escrow."
+اگر این دو Steam ID برابر باشند، پیشنهاد را با استفاده از متد `.accept()` پذیرفته و کال‌بک را فراخوانی می‌کنیم. زمانی که پیشنهاد پذیرفته شد (یا با خطا مواجه شد)، کال‌بک فراخوانی می‌شود. اگر همه چیز به درستی پیش برود، باید پیام "Accepted offer. Status: pending/accepted/escrow." را مشاهده کنید.
 
-To test this out, run the program using `node project2.js` and use the trusted
-account to send an offer to the bot. If you don't have a second account, use a
-friend's Steam ID as the trusted account, and have them send your bot an offer.
+برای آزمایش این، برنامه را با استفاده از `node project2.js` اجرا کنید و از حساب مورد اعتماد پیشنهاد ارسال کنید. اگر حساب دومی ندارید، می‌توانید از Steam ID یک دوست برای حساب مورد اعتماد استفاده کنید و از او بخواهید که پیشنهاد را برای ربات شما ارسال کند.
 
-> **Note that your bot needs to have at least a $5 purchase on Steam to be eligible
-> to receive trade offers. Otherwise, the ```newOffer``` event will not fire.**
+> **توجه داشته باشید که ربات شما باید حداقل یک خرید $5 روی Steam داشته باشد تا واجد شرایط دریافت پیشنهادات تجارت باشد. در غیر این صورت، رویداد `newOffer` فعال نخواهد شد.**
 
-Sure enough, when the trade gets sent, something like this should appear in
-your console:
+قطعا وقتی پیشنهاد ارسال می‌شود، چیزی شبیه به این باید در کنسول شما نمایش داده شود:
 
 ![console.png](./screenshots/console.png)
 
-Then, after giving the program enough time (should be less than ~30 seconds) to
-confirm the trade with Steam, you should see that it has been accepted on
-Steam:
+سپس، پس از دادن زمان کافی به برنامه (باید کمتر از ~30 ثانیه باشد) تا پیشنهاد را با Steam تأیید کند، باید ببینید که پیشنهاد در Steam پذیرفته شده است:
 
 ![trade.png](./screenshots/trade.png)
 
-Awesome! Assuming it works for you, we can move on.
+عالی! اگر همه چیز برای شما به درستی کار کرد، می‌توانیم ادامه دهیم.
 
-What if a scammer sends your bot an offer and wants to take your brand new
-Karambit Fade, or that unusual hat you had been saving up to get? Well luckily,
-we added that check to make sure that we only accept offers from the trusted
-account, but we probably don't want a bunch of offers from scammers sitting
-around, cluttering up our trade offer inbox. We can easily decline these offers
-by adding a bit more code to what we previously wrote.
+اگر یک کلاهبردار پیشنهاداتی برای ربات شما ارسال کند و بخواهد Karambit Fade جدید شما یا کلاه خاصی که به دنبال خریدش بودید را بگیرد چه؟ خوشبختانه، ما آن بررسی را اضافه کردیم تا فقط پیشنهادات ارسال‌شده از حساب مورد اعتماد را قبول کنیم، اما احتمالاً نمی‌خواهیم که پیشنهادات کلاهبرداران در بین پیشنهادات ما بماند و صندوق ورودی پیشنهادات را شلوغ کند. می‌توانیم به راحتی این پیشنهادات را رد کنیم با اضافه کردن کمی کد بیشتر به کدی که قبلاً نوشتیم.
 
 ```js
 manager.on('newOffer', offer => {
@@ -137,12 +96,8 @@ manager.on('newOffer', offer => {
 });
 ```
 
-All we did was add an `else` statement to our Steam ID check, which uses the
-`.decline()` method of the `offer` object to decline the offer. If there is any
-sort of error, we log that error to the command line. Otherwise, we print out
-"Canceled offer from scammer."
+همانطور که مشاهده می‌کنید، تنها کاری که انجام دادیم این است که یک دستور `else` به بررسی Steam ID خود اضافه کردیم، که از متد `.decline()` برای رد پیشنهاد استفاده می‌کند. اگر خطایی وجود داشته باشد، آن را در خط فرمان ثبت می‌کنیم. در غیر این صورت، پیام "Canceled offer from scammer." را چاپ می‌کنیم.
 
-Great! You have your first simple trade offer handling program. In the next
-chapter, we'll work on sending offers to users.
+عالی! شما اکنون اولین برنامه ساده خود برای مدیریت پیشنهادات تجارت را دارید. در فصل بعد، روی ارسال پیشنهادات به کاربران کار خواهیم کرد.
 
-[Continue Reading](../Chapter%202.3%20-%20Sending%20Trade%20Offers)
+[ادامه خواندن](../Chapter%202.3%20-%20Sending%20Trade%20Offers)
