@@ -18,4 +18,4 @@
 این فصل توسط [@andrewda](https://github.com/andrewda) و
 [@Fedzero](https://github.com/Fedzero) نوشته شده است.
 
-ترجمه شپه توسط : [@[PeDitX](https://github.com/peditx)
+ترجمه : [@[PeDitX](https://github.com/peditx)
