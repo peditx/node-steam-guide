@@ -1,13 +1,12 @@
-# Chapter 1.1 - Introduction
+# فصل 1.1 - مقدمه
 
-Steam bots can be used for many things:
- - Donation Bots
- - Chat bots
- - Trade bots (in steam or connected to a website)
- 
-Websites like scrap.tf, cs.money or csgojackpot.com all use some sort of steam bot
+ربات‌های استیم می‌توانند برای اهداف مختلفی استفاده شوند:
+ - ربات‌های اهدا (Donation Bots)
+ - ربات‌های چت (Chat Bots)
+ - ربات‌های معامله (Trade Bots) (در استیم یا متصل به یک وب‌سایت)
 
-In this course, you will learn how to create everything from chat
-bots to fully-functioning trade websites.
+وب‌سایت‌هایی مانند scrap.tf، cs.money یا csgojackpot.com از انواع مختلفی از ربات‌های استیم استفاده می‌کنند.
 
-[Continue Reading](../Chapter%201.2%20-%20Prerequisites)
+در این دوره، شما یاد خواهید گرفت که چگونه از ربات‌های چت تا وب‌سایت‌های معاملاتی کاملاً کاربردی بسازید.
+
+[ادامه مطلب](../Chapter%201.2%20-%20Prerequisites)
