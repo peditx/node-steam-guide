@@ -1,24 +1,15 @@
-# Chapter 1.5 - Errors
+# فصل 1.5 - خطاها
 
-Errors are an inevitable part of programming. You will face them. And it will
-suck. I speak from experience – it really does suck to get errors after working
-day and night on some beautiful code. Luckily, though, we not only have the
-entire internet at our disposal to search for people who have faced similar
-issues, but also a handy quick cheatsheet right here.
+خطاها بخشی اجتناب‌ناپذیر از برنامه‌نویسی هستند. شما با آن‌ها روبرو خواهید شد. و این خیلی آزاردهنده است. من از تجربه صحبت می‌کنم – واقعاً بد است که پس از کار روز و شب بر روی کدهای زیبای خود، با خطاها روبرو شوید. خوشبختانه، ما نه تنها تمام اینترنت را در اختیار داریم تا جستجو کنیم و ببینیم که آیا دیگران با مشکلات مشابهی مواجه شده‌اند، بلکه یک راهنمای سریع نیز در اینجا داریم.
 
-If you receive random Steam issues, checkout the huge list of Steam error codes
-at [steamerrors.com](https://steamerrors.com).
+اگر با مشکلات تصادفی استیم مواجه شدید، لیست بزرگی از کدهای خطای استیم را در [steamerrors.com](https://steamerrors.com) مشاهده کنید.
 
 ### "Cannot find module: THE_MODULE_NAME"
 
-If you get this error, you have most likely installed the given module
-incorrectly. Try reinstalling it by typing `npm install THE_MODULE_NAME` again.
+اگر این خطا را دریافت کردید، احتمالاً ماژول مورد نظر را به اشتباه نصب کرده‌اید. سعی کنید با وارد کردن دستور `npm install THE_MODULE_NAME` دوباره آن را نصب کنید.
 
 ### "Error: InvalidPassword"
 
-This means you have likely specified an incorrect `accountName` or `password`.
-Try re-entering them and make sure they work when logging into the Steam
-client.
+این بدان معنی است که احتمالاً `accountName` یا `password` اشتباهی را وارد کرده‌اید. آن‌ها را دوباره وارد کنید و مطمئن شوید که هنگام ورود به کلاینت استیم درست کار می‌کنند.
 
-This error can also be caused by passing in a `twoFactorCode` when your bot does
-not have 2FA enabled.
+این خطا همچنین می‌تواند به دلیل وارد کردن یک `twoFactorCode` در حالی که ربات شما 2FA فعال ندارد ایجاد شود.
