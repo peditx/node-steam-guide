@@ -1,20 +1,24 @@
-# Chapter 2 - Trading
+# فصل 2 - تجارت
 
-## Table of Contents
+## فهرست مطالب
 
-- [Chapter 2.1 - Prerequisites](./Chapter%202.1%20-%20Prerequisites)
-- [Chapter 2.2 - Handling Trade Offers](./Chapter%202.2%20-%20Handling%20Trade%20Offers)
-- [Chapter 2.3 - Sending Trade Offers](./Chapter%202.3%20-%20Sending%20Trade%20Offers)
-- [Chapter 2.4 - Accepting Donations](./Chapter%202.4%20-%20Accepting%20Donations)
+- [فصل 2.1 - پیش‌نیازها](./Chapter%202.1%20-%20Prerequisites)
+- [فصل 2.2 - مدیریت پیشنهادات تجارت](./Chapter%202.2%20-%20Handling%20Trade%20Offers)
+- [فصل 2.3 - ارسال پیشنهادات تجارت](./Chapter%202.3%20-%20Sending%20Trade%20Offers)
+- [فصل 2.4 - پذیرش اهدایی‌ها](./Chapter%202.4%20-%20Accepting%20Donations)
 
-## Summary
+## خلاصه
 
-Great! You made it through [Chapter 1](../Chapter%201%20-%20Basics). 
-This chapter is where we start to have some fun with Steam. We'll build a bot 
-that handles and accepts/declines incoming trade offers. The bot will also 
-send a specific user a trade with random items from both parties' inventories.
+عالی! شما فصل [1](../Chapter%201%20-%20Basics) را به خوبی پشت سر گذاشتید. 
+این فصل جایی است که از Steam لذت بیشتری خواهیم برد. ما یک ربات خواهیم ساخت 
+که پیشنهادات تجارت ورودی را مدیریت کرده و آنها را قبول یا رد می‌کند. همچنین ربات 
+یک پیشنهاد تجارت برای یک کاربر خاص ارسال خواهد کرد که شامل اقلام تصادفی از 
+مخازن هر دو طرف است.
 
-## Authors
+## نویسندگان
 
-This chapter was written by [@andrewda](https://github.com/andrewda) and
-[@Fedzero](https://github.com/Fedzero).
+این فصل توسط [@andrewda](https://github.com/andrewda) و
+[@Fedzero](https://github.com/Fedzero) نوشته شده است.
+
+
+ترجمه : [@PeDitX](https://github.com/peditx)
