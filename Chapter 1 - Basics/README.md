@@ -1,19 +1,19 @@
-# Chapter 1 - Basics
+# فصل 1 - مبانی
 
-## Table of Contents
+## فهرست مطالب
 
-- [Chapter 1.1 - Introduction](./Chapter%201.1%20-%20Introduction)
-- [Chapter 1.2 - Prerequisites](./Chapter%201.2%20-%20Prerequisites)
-- [Chapter 1.3 - Starting to Code](./Chapter%201.3%20-%20Starting%20to%20Code)
-- [Chapter 1.4 - TOTP](./Chapter%201.4%20-%20TOTP)
-- [Chapter 1.5 - Errors](./Chapter%201.5%20-%20Errors)
+- [فصل 1.1 - مقدمه](./Chapter%201.1%20-%20Introduction)
+- [فصل 1.2 - پیش‌نیازها](./Chapter%201.2%20-%20Prerequisites)
+- [فصل 1.3 - شروع به کدنویسی](./Chapter%201.3%20-%20Starting%20to%20Code)
+- [فصل 1.4 - TOTP](./Chapter%201.4%20-%20TOTP)
+- [فصل 1.5 - خطاها](./Chapter%201.5%20-%20Errors)
 
-## Summary
+## خلاصه
 
-In this chapter, we'll learn about how to create a very basic Steam bot which
-can login to the Steam servers and act like it's playing TF2.
+در این فصل، ما یاد خواهیم گرفت که چگونه یک ربات ساده استیم بسازیم که
+بتواند به سرورهای استیم وارد شود و طوری عمل کند که انگار در حال بازی TF2 است.
 
-## Authors
+## نویسندگان
 
-This chapter was written by [@andrewda](https://github.com/andrewda) and
-[@Fedzero](https://github.com/Fedzero).
+این فصل توسط [@andrewda](https://github.com/andrewda) و
+[@Fedzero](https://github.com/Fedzero) نوشته شده است.
