@@ -1,9 +1,6 @@
-# Chapter 1.3 - Starting to Code
+# فصل 1.3 - شروع به نوشتن کد
 
-Once we have our prerequisites installed, we can begin writing the code
-necessary to login to Steam and simulate the Steam client. First of all, let's
-create a new file and call it `project1.js`. Inside this file, we'll write out
-the following code.
+پس از نصب پیش‌نیازها، می‌توانیم شروع به نوشتن کد مورد نیاز برای ورود به استیم و شبیه‌سازی کلاینت استیم کنیم. ابتدا یک فایل جدید ایجاد کنید و نام آن را `project1.js` بگذارید. داخل این فایل، کد زیر را بنویسید.
 
 ```js
 const SteamUser = require('steam-user');
@@ -21,31 +18,24 @@ client.on('loggedOn', () => {
 });
 ```
 
-Now, run the program using `node project1.js`. If you get an error, checkout
-the troubleshooting section on the main README. If everything works out fine,
-you should be prompted for your 2FA code (if you have 2FA setup on your
-account), then you should see the "Logged into Steam" message appear in your
-command line.
+حالا برنامه را با استفاده از دستور `node project1.js` اجرا کنید. اگر خطا دریافت کردید، بخش عیب‌یابی را در README اصلی بررسی کنید. اگر همه چیز درست پیش برود، از شما خواسته می‌شود که کد 2FA خود را وارد کنید (اگر 2FA را روی حساب خود تنظیم کرده‌اید)، سپس باید پیام "Logged into Steam" در خط فرمان شما ظاهر شود.
 
-Now let's walk through how this code works step-by-step.
+حالا بیایید کد را مرحله به مرحله بررسی کنیم.
 
-### Modules
+### ماژول‌ها
 
-At the top of our program, we see:
+در ابتدای برنامه، ما مشاهده می‌کنیم:
 
 ```js
 const SteamUser = require('steam-user');
 const client = new SteamUser();
 ```
 
-Here, we are `require`ing the `steam-user` module that we previously installed
-using NPM, and create a new instance named `client` with `new SteamUser()`. We
-could call the `SteamUser` and `client` variables whatever we want, but it's
-usually fairly standard to name them fairly closely to their module name.
+در اینجا، ما ماژول `steam-user` که قبلاً با استفاده از NPM نصب کرده‌ایم را `require` کرده و یک نمونه جدید به نام `client` با استفاده از `new SteamUser()` ایجاد می‌کنیم. می‌توانیم متغیرهای `SteamUser` و `client` را هر چیزی که می‌خواهیم نام‌گذاری کنیم، اما معمولاً این نام‌ها را به شکل استاندارد و نزدیک به نام ماژول‌ها انتخاب می‌کنند.
 
-### Objects
+### اشیاء
 
-After `require`ing our modules and creating instances, we define a new object.
+پس از `require` کردن ماژول‌ها و ایجاد نمونه‌ها، یک شیء جدید تعریف می‌کنیم.
 
 ```js
 const logOnOptions = {
@@ -54,28 +44,21 @@ const logOnOptions = {
 };
 ```
 
-This `logOnOptions` object is what we'll use to store our `accountName` and
-`password` as "keys" within the object.
+این شیء `logOnOptions` است که برای ذخیره کردن `accountName` و `password` به عنوان "کلیدها" در داخل شیء استفاده می‌شود.
 
-### Methods
+### متدها
 
 ```js
 client.logOn(logOnOptions);
 ```
 
-We then pass this `logOnOptions` object as a parameter to the `logOn` method of
-our `client`, which is, again, an instance of `SteamUser`. In other words,
-we're telling our `SteamUser` instance to login to the Steam network using our
-username and password.
+ما سپس این شیء `logOnOptions` را به عنوان پارامتر به متد `logOn` از `client` که یک نمونه از `SteamUser` است، می‌دهیم. به عبارت دیگر، ما به نمونه `SteamUser` خود می‌گوییم که با استفاده از نام کاربری و رمز عبور وارد شبکه استیم شود.
 
-A method is simply some code in the module which we can
-use by referencing its name – in this case, `logOn`. We can tell the method to
-take some input from us by giving it parameters – the stuff inside of the
-parentheses.
+یک متد به سادگی کدی است که در ماژول وجود دارد و می‌توانیم با ارجاع به نام آن از آن استفاده کنیم. در این مورد، نام متد `logOn` است. ما می‌توانیم به متد دستور بدهیم که ورودی‌هایی از ما بگیرد، این ورودی‌ها همان‌طور که در داخل پرانتزها قرار دارند، هستند.
 
-### Events
+### رویدادها
 
-We then proceed to adding an event listener.
+سپس یک شنونده رویداد اضافه می‌کنیم.
 
 ```js
 client.on('loggedOn', () => {
@@ -83,26 +66,15 @@ client.on('loggedOn', () => {
 });
 ```
 
-The `on` method takes two parameters – an event name and a function. When the
-`client` emits an event whose name matches the event name we have specified
-in the `on` method, the function we provide will be executed.
+متد `on` دو پارامتر می‌گیرد – نام رویداد و یک تابع. زمانی که `client` یک رویداد با نامی که در متد `on` مشخص کرده‌ایم ارسال کند، تابعی که ارائه کرده‌ایم اجرا خواهد شد.
 
-When `client` emits an event called `loggedOn`, we tell it to execute a
-function, defined in this case using an arrow function. Using an arrow
-function, or `() => { ... }`, is *almost* this same as using `function()`, but
-there are some very important differences. We'll get into these differences as
-they come up. Inside of our function, we tell Node.js to log "Logged into
-Steam" to our command line.
+وقتی `client` رویدادی به نام `loggedOn` ارسال می‌کند، ما به آن می‌گوییم که یک تابع اجرا کند که در اینجا از یک تابع پیکانی (arrow function) استفاده شده است. استفاده از تابع پیکانی یا `() => { ... }` تقریباً همانند استفاده از `function()` است، اما تفاوت‌های مهمی دارد که در زمان‌های مختلف توضیح داده خواهند شد. داخل تابع، ما به Node.js می‌گوییم که پیام "Logged into Steam" را در خط فرمان چاپ کند.
 
 -----
 
-Great! We've created our first Steam bot – but it doesn't really do much. It's
-a little disappointing to login to Steam but get no reward – we don't even
-change our status to online! Well, we can easily make that change. Let's add
-some code onto our beautifully simple bot.
+عالی! ما اولین ربات استیم خود را ایجاد کردیم – اما واقعاً کار زیادی انجام نمی‌دهد. کمی ناامیدکننده است که وارد استیم شویم اما هیچ پاداشی دریافت نکنیم – حتی وضعیت خود را آنلاین نمی‌کنیم! خب، این تغییر را به راحتی می‌توانیم ایجاد کنیم. بیایید کدهایی به ربات ساده خود اضافه کنیم.
 
-We're going to add some code to the `loggedOn` event listener to make it change
-its status to online and start playing some good ol' Team Fortress 2.
+ما قصد داریم کدی به شنونده رویداد `loggedOn` اضافه کنیم تا وضعیت ربات را به آنلاین تغییر داده و شروع به بازی کردن TF2 کنیم.
 
 ```js
 client.on('loggedOn', () => {
@@ -113,24 +85,14 @@ client.on('loggedOn', () => {
 });
 ```
 
-If we run the file now using `node project1.js`, we should see "Logged into
-Steam" in the command line again, but now if we check our Steam profile, we
-should be online and playing TF2.
+اگر اکنون فایل را با استفاده از `node project1.js` اجرا کنیم، باید دوباره پیام "Logged into Steam" را در خط فرمان مشاهده کنیم، اما حالا اگر پروفایل استیم خود را بررسی کنیم، باید آنلاین باشیم و در حال بازی TF2 باشیم.
 
-These two lines are all we need to have our bot change its status to online and
-start playing TF2. The `setPersona` method can take two parameters, the first
-being an [EPersonaState constant](https://github.com/DoctorMcKay/node-steam-user/blob/master/enums/EPersonaState.js),
-and the second being a persona name. The persona name is not required, but can
-be set if you would like to change your Steam name. For example, we could use:
+این دو خط تمام چیزی است که برای تغییر وضعیت ربات به آنلاین و شروع بازی TF2 نیاز داریم. متد `setPersona` می‌تواند دو پارامتر بگیرد، اولین پارامتر یک [ثابت EPersonaState](https://github.com/DoctorMcKay/node-steam-user/blob/master/enums/EPersonaState.js) است و پارامتر دوم نام شخصی است. نام شخصی لازم نیست، اما اگر بخواهید می‌توانید آن را تنظیم کنید تا نام استیم خود را تغییر دهید. به عنوان مثال، می‌توانیم از کد زیر استفاده کنیم:
 
 ```js
 client.setPersona(SteamUser.EPersonaState.Online, 'andrewda');
 ```
 
-to change our Steam name to "andrewda". The `gamesPlayed` method takes one
-parameter – a Steam game's appid or a string for a non-Steam game. It can also
-be used to idle in multiple games at the same time, but we won't get into that
-during this guide. Do note that you must have the game in order to play it,
-unless the game is free like TF2.
+تا نام استیم خود را به "andrewda" تغییر دهیم. متد `gamesPlayed` یک پارامتر می‌گیرد – شناسه اپلیکیشن یک بازی استیم یا یک رشته برای بازی غیر استیم. این متد همچنین می‌تواند برای بازی کردن در چندین بازی به طور همزمان استفاده شود، اما در این راهنما وارد جزئیات آن نمی‌شویم. توجه داشته باشید که باید بازی را داشته باشید تا بتوانید آن را بازی کنید، مگر اینکه بازی رایگان مانند TF2 باشد.
 
-[Continue Reading](../Chapter%201.4%20-%20TOTP)
+[ادامه مطلب](../Chapter%201.4%20-%20TOTP)
