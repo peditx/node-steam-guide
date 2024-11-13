@@ -1,15 +1,12 @@
-# Chapter 1.2 - Prerequisites
+# فصل 1.2 - پیش‌نیازها
 
-Before actually beginning to write your code, make sure you have the following
-prerequisites installed:
+قبل از اینکه شروع به نوشتن کد خود کنید، مطمئن شوید که پیش‌نیازهای زیر را نصب کرده‌اید:
 
-- [Node.js and NPM](https://nodejs.org/en/)
-- [`steam-user`](https://www.npmjs.com/package/steam-user) (`npm install
-	steam-user`) - module which helps facilitate communications with Steam servers
-- [`steam-totp`](https://www.npmjs.com/package/steam-totp) (`npm install steam-totp`) - module for generating Steam Guard codes  
-  - [View Chapter 1.4](../Chapter%201.4%20-%20TOTP#chapter-14) if your bot requires generating Steam Guard codes  
+- [Node.js و NPM](https://nodejs.org/en/)
+- [`steam-user`](https://www.npmjs.com/package/steam-user) (`npm install steam-user`) - ماژولی که به تسهیل ارتباطات با سرورهای استیم کمک می‌کند
+- [`steam-totp`](https://www.npmjs.com/package/steam-totp) (`npm install steam-totp`) - ماژولی برای تولید کدهای Steam Guard  
+  - [مشاهده فصل 1.4](../Chapter%201.4%20-%20TOTP#chapter-14) اگر ربات شما نیاز به تولید کدهای Steam Guard دارد
 
-We'll start adding more Node modules (which you install by using NPM) as the
-need arises.
+ما به تدریج ماژول‌های Node بیشتری را اضافه خواهیم کرد (که آن‌ها را با استفاده از NPM نصب می‌کنید) هرگاه که نیاز باشد.
 
-[Continue Reading](../Chapter%201.3%20-%20Starting%20to%20Code)
+[ادامه مطلب](../Chapter%201.3%20-%20Starting%20to%20Code)
